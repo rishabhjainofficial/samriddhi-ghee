@@ -60,6 +60,10 @@ next-env.d.ts
 
 # AI / agent working dirs
 .superpowers/
+.agent/
+
+# documentation & plans
+docs/
 
 # cache
 .cache
