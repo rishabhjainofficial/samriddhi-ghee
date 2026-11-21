@@ -1,0 +1,170 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         String   @default("ADMIN")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  description String?
+  products    Product[]
+  createdAt   DateTime  @default(now())
+}
+
+model Product {
+  id          String           @id @default(cuid())
+  title       String
+  slug        String           @unique
+  description String
+  benefits    String?
+  ingredients String?
+  images      String           @default("[]") // JSON string of image URLs
+  categoryId  String
+  category    Category         @relation(fields: [categoryId], references: [id])
+  variants    ProductVariant[]
+  orderItems  OrderItem[]
+  isActive    Boolean          @default(true)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+}
+
+model ProductVariant {
+  id            String      @id @default(cuid())
+  productId     String
+  product       Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  title         String      // e.g. "500 ml Glass Jar"
+  sku           String      @unique
+  price         Float       // Selling Price in INR
+  mrp           Float       // Compare-at / MRP
+  stockQuantity Int         @default(0)
+  weightInGrams Int         // Dead weight for logistics
+  lengthCm      Float       @default(15)
+  breadthCm     Float       @default(15)
+  heightCm      Float       @default(15)
+  isActive      Boolean     @default(true)
+  orderItems    OrderItem[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model Customer {
+  id           String    @id @default(cuid())
+  name         String
+  email        String?   @unique
+  phone        String    @unique
+  addressLine1 String?
+  addressLine2 String?
+  landmark     String?
+  city         String?
+  state        String?
+  pincode      String?
+  orders       Order[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model Order {
+  id                  String               @id @default(cuid())
+  orderNumber         String               @unique // e.g. "SG-2026-1001"
+  customerId          String?
+  customer            Customer?            @relation(fields: [customerId], references: [id])
+  customerName        String
+  customerEmail       String
+  customerPhone       String
+  status              String               @default("PENDING_PAYMENT") // PENDING_PAYMENT, PAID, PROCESSING, SHIPPED, DELIVERED, CANCELLED
+  subtotal            Float
+  shippingFee         Float                @default(0)
+  taxAmount           Float                @default(0)
+  totalAmount         Float
+  notes               String?
+  shippingAddress     ShippingAddress?
+  items               OrderItem[]
+  paymentTransactions PaymentTransaction[]
+  shipment            Shipment?
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+}
+
+model OrderItem {
+  id            String          @id @default(cuid())
+  orderId       String
+  order         Order           @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId     String
+  product       Product         @relation(fields: [productId], references: [id])
+  variantId     String
+  variant       ProductVariant  @relation(fields: [variantId], references: [id])
+  title         String
+  variantTitle  String
+  price         Float
+  quantity      Int
+  weightInGrams Int
+}
+
+model ShippingAddress {
+  id            String   @id @default(cuid())
+  orderId       String   @unique
+  order         Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  recipientName String
+  phone         String
+  addressLine1  String
+  addressLine2  String?
+  landmark      String?
+  city          String
+  state         String
+  pincode       String
+  createdAt     DateTime @default(now())
+}
+
+model PaymentTransaction {
+  id               String   @id @default(cuid())
+  orderId          String
+  order            Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  gatewayProvider  String   // MOCK, RAZORPAY
+  gatewayPaymentId String?
+  amount           Float
+  status           String   // SUCCESS, FAILED, PENDING
+  method           String   // UPI, CARD, NETBANKING
+  rawPayload       String?  // JSON debug
+  createdAt        DateTime @default(now())
+}
+
+model Shipment {
+  id            String   @id @default(cuid())
+  orderId       String   @unique
+  order         Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  provider      String   // MOCK, SHIPROCKET
+  shipmentId    String
+  awbCode       String
+  courierName   String
+  status        String   @default("MANIFESTED") // MANIFESTED, IN_TRANSIT, OUT_FOR_DELIVERY, DELIVERED
+  labelUrl      String?
+  weightInGrams Int
+  lengthCm      Float
+  breadthCm     Float
+  heightCm      Float
+  trackingData  String?  // JSON milestones
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model StoreSetting {
+  id        String   @id @default(cuid())
+  key       String   @unique // enableTax, taxRate, enableShippingFee, flatShippingRate, freeShippingThreshold, isCodEnabled, supportPhone, supportEmail
+  value     String
+  updatedAt DateTime @updatedAt
+}
