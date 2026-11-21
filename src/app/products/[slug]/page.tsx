@@ -34,13 +34,40 @@ export async function generateMetadata({
   const product = await getProduct(slug);
   if (!product) return { title: "Product Not Found | Sanvrit Ghee" };
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://sanvritghee.com";
+  let images: string[] = [];
+  try {
+    images = JSON.parse(product.images);
+  } catch {
+    images = ["/images/sanvrit-a2-ghee-front.webp"];
+  }
+
+  const primaryImage = images[0] || "/images/sanvrit-a2-ghee-front.webp";
+
   return {
-    title: `${product.title} | Pure Vedic Bilona Ghee - Sanvrit`,
+    title: `${product.title} | Pure Vedic Bilona Ghee`,
     description: product.description.slice(0, 160),
+    alternates: {
+      canonical: `/products/${product.slug}`,
+    },
     openGraph: {
-      title: product.title,
+      title: `${product.title} | 100% Pure Vedic Bilona Desi Cow Ghee`,
       description: product.description.slice(0, 160),
-      images: ["/images/sanvrit-a2-ghee-front.webp"],
+      url: `${siteUrl}/products/${product.slug}`,
+      images: [
+        {
+          url: primaryImage,
+          width: 800,
+          height: 1000,
+          alt: product.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.title} | Sanvrit Ghee`,
+      description: product.description.slice(0, 160),
+      images: [primaryImage],
     },
   };
 }
@@ -58,6 +85,8 @@ export default async function ProductDetailPage({
     notFound();
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://sanvritghee.com";
+
   let images: string[] = [];
   try {
     images = JSON.parse(product.images);
@@ -67,8 +96,48 @@ export default async function ProductDetailPage({
 
   const primaryImage = images[0] || "/images/sanvrit-a2-ghee-front.webp";
 
+  const minPrice = product.variants.length > 0 ? Math.min(...product.variants.map((v) => v.price)) : 1200;
+  const maxPrice = product.variants.length > 0 ? Math.max(...product.variants.map((v) => v.price)) : 5500;
+
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.title,
+    image: images.map((img) => `${siteUrl}${img}`),
+    description: product.description,
+    sku: product.variants[0]?.sku || "SANVRIT-A2-1L",
+    brand: {
+      "@type": "Brand",
+      name: "Sanvrit",
+    },
+    manufacturer: {
+      "@type": "Organization",
+      name: "Dharmasya Food Products Pvt. Ltd.",
+    },
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "INR",
+      lowPrice: minPrice,
+      highPrice: maxPrice,
+      offerCount: product.variants.length,
+      offers: product.variants.map((v) => ({
+        "@type": "Offer",
+        price: v.price,
+        priceCurrency: "INR",
+        name: v.title,
+        sku: v.sku,
+        availability: v.stockQuantity > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+        url: `${siteUrl}/products/${product.slug}`,
+      })),
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
       <Navbar />
       <CartDrawer />
       <WhatsAppButton />

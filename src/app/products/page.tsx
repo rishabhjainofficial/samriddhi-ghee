@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -6,6 +7,21 @@ import { CartDrawer } from "@/components/cart/CartDrawer";
 import { ProductCard } from "@/components/products/ProductCard";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Pure Desi Ghee Collection | 100% Vedic Bilona Churned",
+  description:
+    "Explore Sanvrit's authentic Vedic Bilona A2 Desi Cow Ghee. Available in 1 Litre Glass Jar and 5 Litre Family Container. Dispatched fresh from Udaipur, Rajasthan.",
+  alternates: {
+    canonical: "/products",
+  },
+  openGraph: {
+    title: "Sanvrit Ghee Catalog | Vedic Bilona Cow Ghee",
+    description:
+      "Explore 100% pure Vedic Bilona A2 Desi Cow Ghee. Glass jar packaging with lab-certified purity.",
+    url: "/products",
+  },
+};
 
 export default async function ProductsPage() {
   const products = await prisma.product.findMany({
