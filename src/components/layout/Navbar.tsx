@@ -32,7 +32,7 @@ export function Navbar() {
       }`}
     >
       {/* Top micro-bar */}
-      <div className="bg-amber-600 text-white text-xs font-medium py-1 px-4 text-center">
+      <div className="bg-amber-600 text-white text-[11px] sm:text-xs font-medium py-1.5 px-3 text-center leading-tight">
         <span>✨ 100% Traditional Vedic Bilona Churned Pure Desi Ghee | Direct from Farm</span>
       </div>
 

@@ -130,20 +130,20 @@ export function CartDrawer() {
                     <div className="flex items-center border border-stone-200 rounded-lg bg-stone-50 overflow-hidden">
                       <button
                         onClick={() => updateQuantity(item.variantId, item.quantity - 1)}
-                        className="p-1.5 hover:bg-stone-200 text-stone-700 transition-colors"
+                        className="p-2 min-w-[28px] min-h-[28px] flex items-center justify-center hover:bg-stone-200 text-stone-700 transition-colors"
                         aria-label="Decrease quantity"
                       >
-                        <Minus className="w-3 h-3" />
+                        <Minus className="w-3.5 h-3.5" />
                       </button>
-                      <span className="px-2.5 text-xs font-semibold text-stone-800">
+                      <span className="px-2 text-xs font-semibold text-stone-800 min-w-[20px] text-center">
                         {item.quantity}
                       </span>
                       <button
                         onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
-                        className="p-1.5 hover:bg-stone-200 text-stone-700 transition-colors"
+                        className="p-2 min-w-[28px] min-h-[28px] flex items-center justify-center hover:bg-stone-200 text-stone-700 transition-colors"
                         aria-label="Increase quantity"
                       >
-                        <Plus className="w-3 h-3" />
+                        <Plus className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   </div>

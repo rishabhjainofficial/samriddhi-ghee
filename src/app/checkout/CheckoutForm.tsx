@@ -238,7 +238,7 @@ export function CheckoutForm() {
                 placeholder="e.g. 9876543210"
                 value={formData.phone}
                 onChange={handlePhoneChange}
-                className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-stone-50/50 font-mono"
+                className="w-full text-base sm:text-sm px-3.5 py-2.5 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-stone-50/50 font-mono"
               />
               <span className="text-[10px] text-stone-400 mt-0.5 block">
                 Type mobile number to auto-fill saved address
@@ -256,7 +256,7 @@ export function CheckoutForm() {
                 placeholder="e.g. Ramesh Sharma"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-stone-50/50"
+                className="w-full text-base sm:text-sm px-3.5 py-2.5 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-stone-50/50"
               />
             </div>
 
@@ -272,7 +272,7 @@ export function CheckoutForm() {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 onBlur={handleEmailBlur}
-                className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-stone-50/50"
+                className="w-full text-base sm:text-sm px-3.5 py-2.5 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-stone-50/50"
               />
             </div>
           </div>
@@ -299,7 +299,7 @@ export function CheckoutForm() {
                 placeholder="e.g. Flat 302, Gokul Heights, MG Road"
                 value={formData.address}
                 onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-stone-50/50"
+                className="w-full text-base sm:text-sm px-3.5 py-2.5 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-stone-50/50"
               />
             </div>
 
@@ -313,7 +313,7 @@ export function CheckoutForm() {
                 placeholder="e.g. Near Metro Station / Behind Temple"
                 value={formData.landmark}
                 onChange={(e) => setFormData({ ...formData, landmark: e.target.value })}
-                className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-stone-50/50"
+                className="w-full text-base sm:text-sm px-3.5 py-2.5 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-stone-50/50"
               />
             </div>
 
@@ -330,7 +330,7 @@ export function CheckoutForm() {
                   placeholder="e.g. 110001"
                   value={formData.pincode}
                   onChange={handlePincodeChange}
-                  className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-stone-50/50 font-mono"
+                  className="w-full text-base sm:text-sm px-3.5 py-2.5 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-stone-50/50 font-mono"
                 />
               </div>
 
@@ -345,7 +345,7 @@ export function CheckoutForm() {
                   placeholder="City"
                   value={formData.city}
                   onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                  className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-stone-50/50"
+                  className="w-full text-base sm:text-sm px-3.5 py-2.5 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-stone-50/50"
                 />
               </div>
 
@@ -360,7 +360,7 @@ export function CheckoutForm() {
                   placeholder="State"
                   value={formData.state}
                   onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                  className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-stone-50/50"
+                  className="w-full text-base sm:text-sm px-3.5 py-2.5 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-stone-50/50"
                 />
               </div>
             </div>
@@ -375,7 +375,7 @@ export function CheckoutForm() {
                 placeholder="e.g. Please leave with security if unavailable."
                 value={formData.notes}
                 onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                className="w-full text-sm px-3.5 py-2 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-stone-50/50"
+                className="w-full text-base sm:text-sm px-3.5 py-2 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-stone-50/50"
               />
             </div>
           </div>

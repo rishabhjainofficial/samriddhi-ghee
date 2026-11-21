@@ -70,7 +70,7 @@ export function VariantSelector({
         <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-2">
           Select Pack Size:
         </label>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        <div className="grid grid-cols-2 gap-3">
           {variants.map((v) => {
             const isSelected = v.id === selectedVariantId;
             return (
@@ -78,14 +78,14 @@ export function VariantSelector({
                 key={v.id}
                 type="button"
                 onClick={() => setSelectedVariantId(v.id)}
-                className={`py-2 px-3 rounded-lg text-left border transition-all ${
+                className={`py-2.5 px-3.5 rounded-xl text-left border transition-all cursor-pointer ${
                   isSelected
-                    ? "border-amber-600 bg-amber-50/80 text-amber-950 font-semibold ring-1 ring-amber-600 shadow-xs"
+                    ? "border-amber-600 bg-amber-50/80 text-amber-950 font-semibold ring-2 ring-amber-500/20 shadow-xs"
                     : "border-stone-200 bg-white text-stone-700 hover:border-stone-300"
                 }`}
               >
-                <div className="text-xs truncate">{v.title}</div>
-                <div className="text-xs font-bold text-stone-900 mt-0.5">
+                <div className="text-xs truncate font-medium">{v.title}</div>
+                <div className="text-xs font-bold text-stone-900 mt-1">
                   ₹{v.price.toLocaleString("en-IN")}
                 </div>
               </button>

@@ -66,7 +66,7 @@ export default async function HomePage() {
                 </div>
 
                 {/* Micro trust stats */}
-                <div className="grid grid-cols-3 gap-4 pt-6 border-t border-stone-200/80 max-w-md">
+                <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-6 border-t border-stone-200/80 max-w-md">
                   <div>
                     <span className="block font-serif text-2xl font-bold text-amber-700">100%</span>
                     <span className="text-xs text-stone-500">Pure & Unadulterated</span>
