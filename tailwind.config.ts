@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      aspectRatio: {
+        "4/3": "4 / 3",
+        "4/5": "4 / 5",
+      },
       colors: {
         primary: {
           DEFAULT: "#D97706", // Ghee golden amber

@@ -16,7 +16,7 @@ export function ProductImageGallery({ images, title }: ProductImageGalleryProps)
   return (
     <div className="space-y-4">
       {/* Main Image Display */}
-      <div className="relative aspect-4/3 rounded-2xl overflow-hidden bg-white border border-stone-200 shadow-xs flex items-center justify-center p-4">
+      <div className="relative w-full h-[320px] sm:h-[420px] aspect-[4/3] rounded-2xl overflow-hidden bg-white border border-stone-200 shadow-xs flex items-center justify-center p-4">
         <Image
           src={activeImage}
           alt={title}

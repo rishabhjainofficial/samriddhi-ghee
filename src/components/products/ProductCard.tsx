@@ -35,7 +35,7 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="bg-white rounded-2xl border border-stone-200 shadow-xs hover:shadow-md transition-shadow overflow-hidden flex flex-col group">
       {/* Image Gallery Thumbnail */}
-      <Link href={`/products/${product.slug}`} className="block relative aspect-4/3 bg-stone-100 overflow-hidden">
+      <Link href={`/products/${product.slug}`} className="block relative w-full h-60 sm:h-72 aspect-[4/3] bg-stone-100 overflow-hidden">
         <Image
           src={primaryImage}
           alt={product.title}
