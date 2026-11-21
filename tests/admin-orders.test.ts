@@ -34,8 +34,8 @@ async function testAdminOrders() {
         customerEmail: "vikram@example.com",
         customerPhone: "9876543210",
         status: "PAID",
-        subtotal: variant?.price || 2249,
-        totalAmount: variant?.price || 2249,
+        subtotal: variant?.price || 1200,
+        totalAmount: variant?.price || 1200,
         items: {
           create: [
             {

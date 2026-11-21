@@ -33,8 +33,8 @@ async function testStorefrontData() {
   const a2Ghee = products.find((p) => p.slug.includes("a2"));
   assert(a2Ghee, "A2 Ghee must exist");
   const var1L = a2Ghee.variants.find((v) => v.title.includes("1000") || v.title.includes("1 Litre"));
-  assert(var1L && var1L.price === 2249, "1L A2 Ghee price must be 2249");
-  assert(var1L.mrp === 2700, "1L A2 Ghee MRP must be 2700");
+  assert(var1L && var1L.price === 1200, "1L A2 Ghee price must be 1200");
+  assert(var1L.mrp === 1500, "1L A2 Ghee MRP must be 1500");
   assert(var1L.mrp > var1L.price, "MRP must be greater than selling price to display savings");
 
   console.log("✓ Storefront product data and variant tier integrity verified!");

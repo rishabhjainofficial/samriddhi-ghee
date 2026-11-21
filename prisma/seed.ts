@@ -85,8 +85,8 @@ async function main() {
           {
             title: "1000 ml (1 Litre) Glass Jar",
             sku: "SANVRIT-A2-1L",
-            price: 2249,
-            mrp: 2700,
+            price: 1200,
+            mrp: 1500,
             stockQuantity: 100,
             weightInGrams: 1600,
             lengthCm: 14,
@@ -97,8 +97,8 @@ async function main() {
           {
             title: "5000 ml (5 Litre) Container",
             sku: "SANVRIT-A2-5L",
-            price: 10499,
-            mrp: 12500,
+            price: 5500,
+            mrp: 6500,
             stockQuantity: 30,
             weightInGrams: 5300,
             lengthCm: 22,

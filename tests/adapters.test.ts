@@ -45,7 +45,7 @@ async function testAdapters() {
   const shipment = await shippingProvider.createShipment({
     orderId: "order_12345",
     orderItems: [
-      { name: "Sanvrit A2 Desi Cow Ghee - 1L", sku: "SANVRIT-A2-1L", qty: 2, price: 2249 },
+      { name: "Sanvrit A2 Desi Cow Ghee - 1L", sku: "SANVRIT-A2-1L", qty: 2, price: 1200 },
     ],
     shippingAddress: {
       name: "Ramesh Sharma",

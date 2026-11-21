@@ -57,8 +57,8 @@ export function ProductForm({ product, categories }: ProductFormProps) {
       {
         title: "1000 ml Glass Jar",
         sku: `SG-GHEE-1000ML-${Date.now().toString().slice(-4)}`,
-        price: 2249,
-        mrp: 2700,
+        price: 1200,
+        mrp: 1500,
         stockQuantity: 30,
         weightInGrams: 1600,
         lengthCm: 14,
