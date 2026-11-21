@@ -84,14 +84,14 @@ export default async function HomePage() {
 
               {/* Hero Image / Jar Showcase */}
               <div className="lg:col-span-5 relative">
-                <div className="relative mx-auto max-w-xs sm:max-w-md rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-amber-50">
+                <div className="relative mx-auto max-w-xs sm:max-w-md rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white p-4">
                   <Image
                     src="/images/sanvrit-a2-ghee-front.webp"
                     alt="Sanvrit Pure A2 Desi Cow Ghee - Taste of Purity"
                     width={600}
                     height={750}
                     priority
-                    className="w-full h-auto object-cover aspect-[4/5]"
+                    className="w-full h-auto object-contain max-h-[460px]"
                   />
                   <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-amber-100 flex items-center justify-between">
                     <div>
