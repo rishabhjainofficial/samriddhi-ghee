@@ -227,10 +227,11 @@ export function CheckoutForm() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-stone-700 mb-1">
+              <label htmlFor="checkout-phone" className="block text-xs font-semibold text-stone-700 mb-1">
                 Mobile Number (10 digits) *
               </label>
               <input
+                id="checkout-phone"
                 type="tel"
                 required
                 maxLength={10}
@@ -245,10 +246,11 @@ export function CheckoutForm() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-stone-700 mb-1">
+              <label htmlFor="checkout-name" className="block text-xs font-semibold text-stone-700 mb-1">
                 Full Name *
               </label>
               <input
+                id="checkout-name"
                 type="text"
                 required
                 placeholder="e.g. Ramesh Sharma"
@@ -259,10 +261,11 @@ export function CheckoutForm() {
             </div>
 
             <div className="sm:col-span-2">
-              <label className="block text-xs font-semibold text-stone-700 mb-1">
+              <label htmlFor="checkout-email" className="block text-xs font-semibold text-stone-700 mb-1">
                 Email Address (For invoice & tracking updates) *
               </label>
               <input
+                id="checkout-email"
                 type="email"
                 required
                 placeholder="ramesh@example.com"
@@ -286,10 +289,11 @@ export function CheckoutForm() {
 
           <div className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-stone-700 mb-1">
+              <label htmlFor="checkout-address" className="block text-xs font-semibold text-stone-700 mb-1">
                 Flat / House No., Building, Street *
               </label>
               <input
+                id="checkout-address"
                 type="text"
                 required
                 placeholder="e.g. Flat 302, Gokul Heights, MG Road"
@@ -300,10 +304,11 @@ export function CheckoutForm() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-stone-700 mb-1">
+              <label htmlFor="checkout-landmark" className="block text-xs font-semibold text-stone-700 mb-1">
                 Landmark / Area (Optional)
               </label>
               <input
+                id="checkout-landmark"
                 type="text"
                 placeholder="e.g. Near Metro Station / Behind Temple"
                 value={formData.landmark}
@@ -314,10 +319,11 @@ export function CheckoutForm() {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-stone-700 mb-1">
+                <label htmlFor="checkout-pincode" className="block text-xs font-semibold text-stone-700 mb-1">
                   PIN Code *
                 </label>
                 <input
+                  id="checkout-pincode"
                   type="text"
                   required
                   maxLength={6}
@@ -329,10 +335,11 @@ export function CheckoutForm() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-stone-700 mb-1">
+                <label htmlFor="checkout-city" className="block text-xs font-semibold text-stone-700 mb-1">
                   City *
                 </label>
                 <input
+                  id="checkout-city"
                   type="text"
                   required
                   placeholder="City"
@@ -343,10 +350,11 @@ export function CheckoutForm() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-stone-700 mb-1">
+                <label htmlFor="checkout-state" className="block text-xs font-semibold text-stone-700 mb-1">
                   State *
                 </label>
                 <input
+                  id="checkout-state"
                   type="text"
                   required
                   placeholder="State"
@@ -358,10 +366,11 @@ export function CheckoutForm() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-stone-700 mb-1">
+              <label htmlFor="checkout-notes" className="block text-xs font-semibold text-stone-700 mb-1">
                 Order Delivery Instructions (Optional)
               </label>
               <textarea
+                id="checkout-notes"
                 rows={2}
                 placeholder="e.g. Please leave with security if unavailable."
                 value={formData.notes}
@@ -426,8 +435,13 @@ export function CheckoutForm() {
           </div>
 
           {error && (
-            <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-lg">
-              {error}
+            <div
+              role="alert"
+              aria-live="polite"
+              className="p-3.5 bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl flex items-center gap-2"
+            >
+              <span className="font-semibold">Notice:</span>
+              <span>{error}</span>
             </div>
           )}
 

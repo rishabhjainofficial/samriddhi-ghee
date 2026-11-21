@@ -101,8 +101,14 @@ export function Footer() {
 
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-4">
           <p>© {new Date().getFullYear()} Sanvrit Dairy Products • Dharmasya Food Products Pvt. Ltd. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link href="/admin/login" className="hover:text-stone-400 transition-colors">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+            <span className="text-stone-400">FSSAI Lic: 22225088000714</span>
+            <span className="text-stone-600">•</span>
+            <Link href="/track" className="hover:text-stone-300 transition-colors">
+              Delivery & Tracking
+            </Link>
+            <span className="text-stone-600">•</span>
+            <Link href="/admin/login" className="hover:text-stone-300 transition-colors">
               Admin Portal
             </Link>
             <span className="text-stone-600">•</span>

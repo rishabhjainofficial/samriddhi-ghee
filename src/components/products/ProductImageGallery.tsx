@@ -34,6 +34,8 @@ export function ProductImageGallery({ images, title }: ProductImageGalleryProps)
               key={idx}
               type="button"
               onClick={() => setActiveIdx(idx)}
+              aria-label={`View ${title} packaging view ${idx + 1}`}
+              aria-current={activeIdx === idx ? "true" : undefined}
               className={`w-20 h-20 rounded-xl overflow-hidden border-2 p-1 bg-white transition-all cursor-pointer ${
                 activeIdx === idx
                   ? "border-amber-600 ring-2 ring-amber-500/30 scale-102"
