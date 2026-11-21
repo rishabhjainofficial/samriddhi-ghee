@@ -97,7 +97,7 @@ export function ProductForm({ product, categories }: ProductFormProps) {
       benefits: formData.benefits,
       ingredients: formData.ingredients,
       categoryId: formData.categoryId,
-      images: [formData.imageUrl || "/images/a2-cow-ghee.jpg"],
+      images: [formData.imageUrl || "/images/sanvrit-a2-ghee-front.webp"],
       isActive: formData.isActive,
       variants,
     };

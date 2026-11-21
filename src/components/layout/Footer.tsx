@@ -11,7 +11,7 @@ export function Footer() {
           <div className="space-y-4">
             <div className="inline-block bg-stone-950/80 border border-stone-800 p-2.5 rounded-2xl shadow-sm">
               <Image
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt="Sanvrit Ghee - Taste of Purity"
                 width={150}
                 height={50}

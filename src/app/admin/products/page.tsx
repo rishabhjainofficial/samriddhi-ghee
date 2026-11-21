@@ -56,7 +56,7 @@ export default async function AdminProductsPage() {
                 } catch {
                   images = [];
                 }
-                const thumbnail = images[0] || "/images/a2-cow-ghee.jpg";
+                const thumbnail = images[0] || "/images/sanvrit-a2-ghee-front.webp";
 
                 const prices = product.variants.map((v) => v.price);
                 const minPrice = prices.length > 0 ? Math.min(...prices) : 0;

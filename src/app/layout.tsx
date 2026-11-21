@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   description:
     "Experience the rich golden aroma and granular purity of Sanvrit Vedic Bilona Ghee. Hand-churned from free-grazing Indian cows with pure taste of purity.",
   icons: {
-    icon: "/images/logo-icon.png",
-    apple: "/images/logo-icon.png",
+    icon: "/images/logo-icon.webp",
+    apple: "/images/logo-icon.webp",
   },
 };
 

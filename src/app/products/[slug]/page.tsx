@@ -1,3 +1,5 @@
+import { cache } from "react";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { Navbar } from "@/components/layout/Navbar";
@@ -10,14 +12,8 @@ import { ShieldCheck, Award, Sparkles, Check } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
-export default async function ProductDetailPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-
-  const product = await prisma.product.findUnique({
+const getProduct = cache(async (slug: string) => {
+  return prisma.product.findUnique({
     where: { slug },
     include: {
       variants: {
@@ -27,6 +23,36 @@ export default async function ProductDetailPage({
       category: true,
     },
   });
+});
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const product = await getProduct(slug);
+  if (!product) return { title: "Product Not Found | Sanvrit Ghee" };
+
+  return {
+    title: `${product.title} | Pure Vedic Bilona Ghee - Sanvrit`,
+    description: product.description.slice(0, 160),
+    openGraph: {
+      title: product.title,
+      description: product.description.slice(0, 160),
+      images: ["/images/sanvrit-a2-ghee-front.webp"],
+    },
+  };
+}
+
+export default async function ProductDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+
+  const product = await getProduct(slug);
 
   if (!product) {
     notFound();
@@ -36,10 +62,10 @@ export default async function ProductDetailPage({
   try {
     images = JSON.parse(product.images);
   } catch {
-    images = ["/images/a2-cow-ghee.jpg"];
+    images = ["/images/sanvrit-a2-ghee-front.webp"];
   }
 
-  const primaryImage = images[0] || "/images/a2-cow-ghee.jpg";
+  const primaryImage = images[0] || "/images/sanvrit-a2-ghee-front.webp";
 
   return (
     <>

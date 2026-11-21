@@ -40,7 +40,7 @@ export function Navbar() {
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <Image
-            src="/images/logo.png"
+            src="/images/logo.webp"
             alt="Sanvrit - Taste of Purity"
             width={160}
             height={52}

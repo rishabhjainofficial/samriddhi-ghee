@@ -43,7 +43,7 @@ export default function AdminLoginPage() {
         <div className="text-center space-y-3">
           <div className="w-24 h-16 rounded-2xl bg-white/95 mx-auto flex items-center justify-center p-2 shadow-lg border border-stone-800">
             <Image
-              src="/images/logo.png"
+              src="/images/logo.webp"
               alt="Sanvrit"
               width={140}
               height={70}

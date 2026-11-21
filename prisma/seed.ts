@@ -75,8 +75,8 @@ async function main() {
         "• Made with traditional Vedic Bilona method (Curd to Makkhan to Ghee)\n• Granular 'Danedaar' golden aroma & pure authentic taste\n• Rich in A2 beta-casein protein and natural fat-soluble vitamins (A, D, E, K)\n• Enhances digestive Agni, natural immunity, and cognitive stamina\n• Sealed in airtight food-grade glass packaging with zero chemical leaching\n• FSSAI Lic. No. 22225088000714 certified pure",
       ingredients: "100% Pure Cultured Butterfat from A2 Desi Cow Whole Milk Curd.",
       images: JSON.stringify([
-        "/images/sanvrit-a2-ghee-front.jpg",
-        "/images/sanvrit-a2-ghee-back.jpg",
+        "/images/sanvrit-a2-ghee-front.webp",
+        "/images/sanvrit-a2-ghee-back.webp",
       ]),
       categoryId: gheeCategory.id,
       isActive: true,

@@ -16,7 +16,7 @@ async function testAdminProducts() {
       slug,
       description: "Sample test artisanal ghee description.",
       categoryId: category.id,
-      images: JSON.stringify(["https://example.com/ghee.jpg"]),
+      images: JSON.stringify(["https://example.com/ghee.webp"]),
       variants: {
         create: [
           {

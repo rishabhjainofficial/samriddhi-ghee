@@ -294,7 +294,7 @@ export function OrderMasterTable({ initialOrders }: OrderMasterTableProps) {
             <div className="flex justify-between items-center pb-4 border-b border-stone-200">
               <div className="flex items-center gap-3">
                 <Image
-                  src="/images/logo.png"
+                  src="/images/logo.webp"
                   alt="Sanvrit"
                   width={110}
                   height={40}

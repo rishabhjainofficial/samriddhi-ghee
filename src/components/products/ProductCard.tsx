@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { VariantSelector } from "./VariantSelector";
 
 interface ProductCardProps {
@@ -26,21 +27,23 @@ export function ProductCard({ product }: ProductCardProps) {
   try {
     images = JSON.parse(product.images);
   } catch {
-    images = ["/images/a2-cow-ghee.jpg"];
+    images = ["/images/sanvrit-a2-ghee-front.webp"];
   }
 
-  const primaryImage = images[0] || "/images/a2-cow-ghee.jpg";
+  const primaryImage = images[0] || "/images/sanvrit-a2-ghee-front.webp";
 
   return (
     <div className="bg-white rounded-2xl border border-stone-200 shadow-xs hover:shadow-md transition-shadow overflow-hidden flex flex-col group">
       {/* Image Gallery Thumbnail */}
       <Link href={`/products/${product.slug}`} className="block relative aspect-4/3 bg-stone-100 overflow-hidden">
-        <img
+        <Image
           src={primaryImage}
           alt={product.title}
-          className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover group-hover:scale-103 transition-transform duration-300"
         />
-        <div className="absolute top-3 left-3 bg-stone-900/80 backdrop-blur-xs text-white text-[11px] font-medium px-2.5 py-1 rounded-full">
+        <div className="absolute top-3 left-3 bg-stone-900/80 backdrop-blur-xs text-white text-[11px] font-medium px-2.5 py-1 rounded-full z-10">
           Vedic Bilona Churned
         </div>
       </Link>

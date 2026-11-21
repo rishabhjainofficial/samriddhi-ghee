@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { X, Plus, Minus, Trash2, ArrowRight, ShieldCheck, Truck } from "lucide-react";
 import { useCartStore } from "@/lib/store/cart";
 import { calculateOrderTotals } from "@/lib/utils/pricing";
@@ -89,11 +90,15 @@ export function CartDrawer() {
                   key={item.variantId}
                   className="bg-white p-3.5 rounded-xl border border-stone-200/80 shadow-xs flex gap-3.5 items-center"
                 >
-                  <img
-                    src={item.image || "/images/a2-cow-ghee.jpg"}
-                    alt={item.productTitle}
-                    className="w-16 h-16 object-cover rounded-lg bg-stone-100 shrink-0 border border-stone-200"
-                  />
+                  <div className="relative w-16 h-16 rounded-lg bg-stone-100 shrink-0 border border-stone-200 overflow-hidden">
+                    <Image
+                      src={item.image || "/images/sanvrit-a2-ghee-front.webp"}
+                      alt={item.productTitle}
+                      fill
+                      sizes="64px"
+                      className="object-cover"
+                    />
+                  </div>
 
                   <div className="flex-1 min-w-0">
                     <h4 className="font-serif font-bold text-sm text-stone-900 truncate">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 interface ProductImageGalleryProps {
   images: string[];
@@ -10,18 +11,21 @@ interface ProductImageGalleryProps {
 export function ProductImageGallery({ images, title }: ProductImageGalleryProps) {
   const [activeIdx, setActiveIdx] = useState(0);
 
-  const activeImage = images[activeIdx] || images[0] || "/images/sanvrit-a2-ghee-front.jpg";
+  const activeImage = images[activeIdx] || images[0] || "/images/sanvrit-a2-ghee-front.webp";
 
   return (
     <div className="space-y-4">
       {/* Main Image Display */}
       <div className="relative aspect-4/3 rounded-2xl overflow-hidden bg-white border border-stone-200 shadow-xs flex items-center justify-center p-4">
-        <img
+        <Image
           src={activeImage}
           alt={title}
-          className="w-full h-full object-contain max-h-[460px] transition-all duration-300"
+          fill
+          priority
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          className="object-contain p-4 transition-all duration-300"
         />
-        <div className="absolute top-3 left-3 bg-stone-900/85 backdrop-blur-xs text-white text-[11px] font-medium px-3 py-1 rounded-full shadow-sm">
+        <div className="absolute top-3 left-3 bg-stone-900/85 backdrop-blur-xs text-white text-[11px] font-medium px-3 py-1 rounded-full shadow-sm z-10">
           {activeIdx === 0 ? "Front View • 1000ml" : "Nutritional & Label Details"}
         </div>
       </div>
@@ -36,16 +40,18 @@ export function ProductImageGallery({ images, title }: ProductImageGalleryProps)
               onClick={() => setActiveIdx(idx)}
               aria-label={`View ${title} packaging view ${idx + 1}`}
               aria-current={activeIdx === idx ? "true" : undefined}
-              className={`w-20 h-20 rounded-xl overflow-hidden border-2 p-1 bg-white transition-all cursor-pointer ${
+              className={`relative w-20 h-20 rounded-xl overflow-hidden border-2 p-1 bg-white transition-all cursor-pointer ${
                 activeIdx === idx
                   ? "border-amber-600 ring-2 ring-amber-500/30 scale-102"
                   : "border-stone-200 hover:border-amber-300 opacity-80 hover:opacity-100"
               }`}
             >
-              <img
+              <Image
                 src={img}
                 alt={`${title} view ${idx + 1}`}
-                className="w-full h-full object-contain"
+                fill
+                sizes="80px"
+                className="object-contain p-1"
               />
             </button>
           ))}

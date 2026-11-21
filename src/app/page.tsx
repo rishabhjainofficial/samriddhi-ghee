@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -84,9 +85,12 @@ export default async function HomePage() {
               {/* Hero Image / Jar Showcase */}
               <div className="lg:col-span-5 relative">
                 <div className="relative mx-auto max-w-md rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-amber-50">
-                  <img
-                    src="/images/sanvrit-a2-ghee-front.jpg"
+                  <Image
+                    src="/images/sanvrit-a2-ghee-front.webp"
                     alt="Sanvrit Pure A2 Desi Cow Ghee - Taste of Purity"
+                    width={600}
+                    height={750}
+                    priority
                     className="w-full h-auto object-cover aspect-4/5"
                   />
                   <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-amber-100 flex items-center justify-between">

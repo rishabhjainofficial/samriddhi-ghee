@@ -39,7 +39,7 @@ export function AdminSidebar() {
       <div className="p-5 border-b border-stone-800 flex items-center gap-3">
         <div className="w-10 h-10 rounded-xl bg-white/10 border border-stone-700/60 p-1 flex items-center justify-center shrink-0 shadow-sm overflow-hidden">
           <Image
-            src="/images/logo-icon.png"
+            src="/images/logo-icon.webp"
             alt="Sanvrit"
             width={36}
             height={36}
