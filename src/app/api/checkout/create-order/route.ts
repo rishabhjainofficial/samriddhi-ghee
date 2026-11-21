@@ -15,11 +15,37 @@ export async function POST(req: Request) {
       );
     }
 
+    const cleanPhone = customer.phone.replace(/\D/g, "").slice(-10);
+    if (cleanPhone.length !== 10 || !/^[6-9]\d{9}$/.test(cleanPhone)) {
+      return NextResponse.json(
+        { error: "Please provide a valid 10-digit Indian mobile number." },
+        { status: 400 }
+      );
+    }
+
+    const cleanPincode = shippingAddress.pincode.replace(/\D/g, "");
+    if (cleanPincode.length !== 6) {
+      return NextResponse.json(
+        { error: "Please provide a valid 6-digit delivery pincode." },
+        { status: 400 }
+      );
+    }
+
     if (!Array.isArray(items) || items.length === 0) {
       return NextResponse.json(
         { error: "Cart is empty." },
         { status: 400 }
       );
+    }
+
+    for (const item of items) {
+      const qty = Number(item.quantity);
+      if (!Number.isInteger(qty) || qty <= 0 || qty > 50) {
+        return NextResponse.json(
+          { error: "Item quantities must be positive integers between 1 and 50." },
+          { status: 400 }
+        );
+      }
     }
 
     // 1. Fetch live variant details from database for pricing integrity
@@ -84,7 +110,6 @@ export async function POST(req: Request) {
     });
 
     // 4. Create or Update Customer Profile in Database
-    const cleanPhone = customer.phone.replace(/\D/g, "").slice(-10);
     const cleanEmail = customer.email ? customer.email.trim().toLowerCase() : null;
 
     let customerRecord = null;

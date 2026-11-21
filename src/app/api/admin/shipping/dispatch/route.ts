@@ -1,9 +1,18 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getShippingProvider } from "@/lib/services/shipping";
+import { getAdminFromRequest } from "@/lib/auth";
 
 export async function POST(req: Request) {
   try {
+    const admin = await getAdminFromRequest(req);
+    if (!admin) {
+      return NextResponse.json(
+        { error: "Unauthorized. Valid administrator session required." },
+        { status: 401 }
+      );
+    }
+
     const { orderId, dimensions } = await req.json();
 
     if (!orderId) {

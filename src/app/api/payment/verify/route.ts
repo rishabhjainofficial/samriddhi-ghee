@@ -22,6 +22,16 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Order not found." }, { status: 404 });
     }
 
+    // Idempotency: If order is already PAID, return success without duplicate inventory decrements
+    if (order.status === "PAID") {
+      return NextResponse.json({
+        success: true,
+        orderId: order.id,
+        status: "PAID",
+        alreadyVerified: true,
+      });
+    }
+
     // 1. Verify Payment with Payment Adapter
     const gateway = getPaymentGateway();
     const verification = await gateway.verifyPayment({

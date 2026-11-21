@@ -78,3 +78,15 @@ export async function verifySessionToken(
     return null;
   }
 }
+
+export async function getAdminFromRequest(
+  req: Request
+): Promise<IAdminSessionPayload | null> {
+  const cookieHeader = req.headers.get("cookie") || "";
+  const match =
+    cookieHeader.match(/sanvrit_admin_token=([^;]+)/) ||
+    cookieHeader.match(/samriddhi_admin_token=([^;]+)/);
+  const bearer = req.headers.get("authorization")?.replace(/^Bearer\s+/i, "");
+  const token = match ? match[1] : bearer;
+  return verifySessionToken(token);
+}

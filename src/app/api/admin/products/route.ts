@@ -1,8 +1,17 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { getAdminFromRequest } from "@/lib/auth";
 
 export async function POST(req: Request) {
   try {
+    const admin = await getAdminFromRequest(req);
+    if (!admin) {
+      return NextResponse.json(
+        { error: "Unauthorized. Valid administrator session required." },
+        { status: 401 }
+      );
+    }
+
     const body = await req.json();
     const { title, slug, description, benefits, ingredients, categoryId, images, isActive, variants } = body;
 
@@ -41,6 +50,14 @@ export async function POST(req: Request) {
 
 export async function PUT(req: Request) {
   try {
+    const admin = await getAdminFromRequest(req);
+    if (!admin) {
+      return NextResponse.json(
+        { error: "Unauthorized. Valid administrator session required." },
+        { status: 401 }
+      );
+    }
+
     const body = await req.json();
     const { id, title, slug, description, benefits, ingredients, categoryId, images, isActive, variants } = body;
 
