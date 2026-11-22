@@ -14,22 +14,48 @@ const config: Config = {
       },
       colors: {
         primary: {
-          DEFAULT: "#D97706", // Ghee golden amber
+          DEFAULT: "#7C2D12", // Earthy Terracotta Brown (Rosier signature)
+          dark: "#5E1F09",
+          light: "#9A3412",
+        },
+        terracotta: {
+          DEFAULT: "#7C2D12",
+          light: "#9A3412",
+          dark: "#5A1B07",
+          50: "#FFF7ED",
+          100: "#FFEDD5",
+          800: "#9A3412",
+          900: "#7C2D12",
+          950: "#431407",
+        },
+        amber: {
+          DEFAULT: "#D97706",
           dark: "#B45309",
-          light: "#FBBF24",
+          light: "#F59E0B",
+          gold: "#E0981E",
+        },
+        forest: {
+          DEFAULT: "#1B4332",
+          dark: "#0F281E",
+          light: "#2D6A4F",
         },
         organic: {
-          DEFAULT: "#059669", // Purity emerald
+          DEFAULT: "#059669",
           dark: "#047857",
           light: "#10B981",
         },
         cream: {
-          DEFAULT: "#FDFBF7", // Warm soft ivory canvas
-          dark: "#F5EFE6",
+          DEFAULT: "#FAF6EE", // Warm Rosier Ivory
+          light: "#FDFBF7",
+          dark: "#F3ECE0",
+          50: "#FCF9F2",
+          100: "#FAF6EE",
+          200: "#F3ECE0",
         },
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        serif: ["var(--font-serif)", "Georgia", "Cambria", "serif"],
       },
     },
   },

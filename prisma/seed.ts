@@ -31,7 +31,7 @@ async function main() {
     { key: "flatShippingRate", value: "0" },
     { key: "freeShippingThreshold", value: "999" },
     { key: "isCodEnabled", value: "false" },
-    { key: "supportPhone", value: "+91 98765 43210" },
+    { key: "supportPhone", value: "+91 86900 54729" },
     { key: "supportEmail", value: "support@sanvritghee.com" },
     { key: "storeNotice", value: "Sanvrit Pure A2 Gir Cow Cultured Bilona Ghee. Taste of Purity." },
   ];
@@ -67,13 +67,14 @@ async function main() {
 
   const sanvritGhee = await prisma.product.create({
     data: {
-      title: "Sanvrit A2 Desi Cow Ghee",
+      title: "Sanvrit A2 Desi Cow Bilona Ghee",
       slug: "sanvrit-a2-desi-cow-ghee",
       description:
-        "Made with the traditional Vedic Bilona method from fresh whole milk curd of free-grazing indigenous cows. Slow-simmered over gentle flame in brass vessels to retain sacred golden granules, medicinal fatty acids, and authentic taste of purity.",
+        "Handcrafted in small batches in Udaipur from the whole milk of free-grazing indigenous Gir cows. Unlike commercial cream-based ghee, Sanvrit Ghee is cultured overnight into curd, bi-directionally churned using a traditional wooden madhani before sunrise, and slow-simmered under controlled heat to lock in its natural aroma, rich granular (danedaar) texture, and essential nutrients.",
       benefits:
-        "• Made with traditional Vedic Bilona method (Curd to Makkhan to Ghee)\n• Granular 'Danedaar' golden aroma & pure authentic taste\n• Rich in A2 beta-casein protein and natural fat-soluble vitamins (A, D, E, K)\n• Enhances digestive Agni, natural immunity, and cognitive stamina\n• Sealed in airtight food-grade glass packaging with zero chemical leaching\n• FSSAI Lic. No. 22225088000714 certified pure",
-      ingredients: "100% Pure Cultured Butterfat from A2 Desi Cow Whole Milk Curd.",
+        "• 100% Curd-Churned (Vedic Bilona Method): Made strictly from whole milk curd—never directly from industrial cream or malai.\n• Single-Origin Gir Cow A2 Milk: Sourced from grass-fed, free-grazing native cows raised without synthetic hormones.\n• Controlled Small-Batch Simmering: Gently clarified to preserve healthy fatty acids (including butyric acid and omega-3s) without burning or bitterness.\n• Pure & Unadulterated: Zero preservatives, palm oil, vanaspati, artificial colours, or added flavours.",
+      ingredients:
+        "100% Pure Cultured Butterfat from A2 Gir Cow Whole Milk Curd (Traditional Bilona Churned in Udaipur, Rajasthan).",
       images: JSON.stringify([
         "/images/sanvrit-a2-ghee-front.webp",
         "/images/sanvrit-a2-ghee-back.webp",
@@ -83,7 +84,7 @@ async function main() {
       variants: {
         create: [
           {
-            title: "1000 ml (1 Litre) Glass Jar",
+            title: "1 Litre Glass Jar (1000 ml)",
             sku: "SANVRIT-A2-1L",
             price: 1200,
             mrp: 1500,
@@ -95,7 +96,7 @@ async function main() {
             isActive: true,
           },
           {
-            title: "5000 ml (5 Litre) Container",
+            title: "5 Litre Family Container (5000 ml)",
             sku: "SANVRIT-A2-5L",
             price: 5500,
             mrp: 6500,

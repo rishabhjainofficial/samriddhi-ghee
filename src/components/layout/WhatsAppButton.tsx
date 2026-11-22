@@ -3,7 +3,7 @@
 import { MessageCircle } from "lucide-react";
 
 export function WhatsAppButton() {
-  const phoneNumber = "919876543210";
+  const phoneNumber = "918690054729";
   const defaultMessage = encodeURIComponent(
     "Hi Sanvrit Ghee, I have a query about your pure A2 Bilona Desi Ghee products."
   );
