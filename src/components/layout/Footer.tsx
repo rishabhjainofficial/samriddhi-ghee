@@ -8,10 +8,6 @@ import {
   Award,
   Phone,
   Mail,
-  Instagram,
-  Youtube,
-  Facebook,
-  Truck,
   Sparkles,
   Package,
   Milk,
@@ -22,11 +18,69 @@ import {
   Flame,
 } from "lucide-react";
 
+interface IconProps {
+  readonly className?: string;
+}
+
+function InstagramIcon({ className = "w-4 h-4" }: IconProps) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
+
+function YoutubeIcon({ className = "w-4 h-4" }: IconProps) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+      <path d="m10 15 5-3-5-3z" fill="currentColor" />
+    </svg>
+  );
+}
+
+function FacebookIcon({ className = "w-4 h-4" }: IconProps) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+  );
+}
+
 export function Footer() {
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (emailOrPhone.trim()) {
       setSubscribed(true);
@@ -123,6 +177,8 @@ export function Footer() {
             className="w-full h-full"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            role="presentation"
           >
             <defs>
               <linearGradient id="farHillsFooter" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -254,6 +310,7 @@ export function Footer() {
                       value={emailOrPhone}
                       onChange={(e) => setEmailOrPhone(e.target.value)}
                       placeholder="Enter WhatsApp number or email"
+                      suppressHydrationWarning
                       className="flex-1 px-4 py-3.5 rounded-2xl bg-[#1F0A03] border border-amber-800/60 text-white placeholder-stone-400 text-xs sm:text-sm focus:outline-hidden focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition-all"
                     />
                     <button
@@ -311,7 +368,7 @@ export function Footer() {
                     aria-label="Follow Sanvrit Ghee on Instagram"
                     className="w-10 h-10 rounded-2xl bg-[#3A170A] hover:bg-[#E1306C] text-amber-200 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm border border-amber-700/50 hover:scale-105 cursor-pointer"
                   >
-                    <Instagram className="w-4 h-4" />
+                    <InstagramIcon className="w-4 h-4" />
                   </a>
 
                   <a
@@ -321,7 +378,7 @@ export function Footer() {
                     aria-label="Subscribe to Sanvrit Ghee on YouTube"
                     className="w-10 h-10 rounded-2xl bg-[#3A170A] hover:bg-[#FF0000] text-amber-200 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm border border-amber-700/50 hover:scale-105 cursor-pointer"
                   >
-                    <Youtube className="w-4 h-4" />
+                    <YoutubeIcon className="w-4 h-4" />
                   </a>
 
                   <a
@@ -331,7 +388,7 @@ export function Footer() {
                     aria-label="Follow Sanvrit Ghee on Facebook"
                     className="w-10 h-10 rounded-2xl bg-[#3A170A] hover:bg-[#1877F2] text-amber-200 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm border border-amber-700/50 hover:scale-105 cursor-pointer"
                   >
-                    <Facebook className="w-4 h-4" />
+                    <FacebookIcon className="w-4 h-4" />
                   </a>
                 </div>
               </div>
